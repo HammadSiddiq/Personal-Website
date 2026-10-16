@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+
+const steps = [
+  ['Scope', 'We agree on what "done" looks like before any code is written: features, platforms, and constraints.'],
+  ['Prototype', 'I build the riskiest part first, so problems show up early and cheaply.'],
+  ['Build in small steps', 'Regular playable builds so you can see progress and steer it.'],
+  ['Polish & test', 'Performance, edge cases, and device testing before handoff.'],
+  ['Handoff', 'Clean, documented code and a build you can run yourself.'],
+];
+---
+
+<Base title="How I Work" description="How Hammad Sid scopes, builds, and delivers game and VR projects.">
+  <h1 class="text-3xl font-bold tracking-tight md:text-4xl">How I work</h1>
+  <p class="mt-3 max-w-2xl text-muted">A simple process that keeps projects predictable.</p>
+
+  <ol class="mt-10 space-y-4">
+    {
+      steps.map(([t, d], i) => (
+        <li class="card flex gap-4">
+          <span class="font-mono text-sm text-accent">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h2 class="font-semibold">{t}</h2>
+            <p class="mt-1 text-sm text-muted">{d}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="mt-12 rounded-xl border border-border p-6">
+    <h2 class="text-lg font-semibold">Have a project in mind?</h2>
+    <p class="mt-1 text-sm text-muted">Tell me what you're building and I'll tell you how I'd approach it.</p>
+    <a href="/contact" class="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:brightness-110">
+      Contact me
+    </a>
+  </div>
+</Base>

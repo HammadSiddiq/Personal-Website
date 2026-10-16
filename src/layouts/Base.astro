@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Hammad Sid',
+  description = 'Hammad Sid — Unity developer building multiplayer VR and browser games.',
+} = Astro.props;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/how-i-work', label: 'How I Work' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const fullTitle = title === 'Hammad Sid' ? title : `${title} · Hammad Sid`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const links = {
+  email: 'mailto:hammadsid14@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/hammadmsiddique/',
+  github: 'https://github.com/HammadSiddiq',
+  upwork: 'https://www.upwork.com/freelancers/~0189f791d8afe7a799',
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#0a0a0f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="antialiased">
+    <header class="sticky top-0 z-50 border-b border-border/60 bg-bg/80 backdrop-blur">
+      <nav class="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
+        <a href="/" class="font-mono text-sm font-medium tracking-tight">
+          <span class="gradient-text">hammad</span><span class="text-muted">/sid</span>
+        </a>
+        <ul class="hidden gap-6 text-sm md:flex">
+          {
+            nav.map((n) => (
+              <li>
+                <a
+                  href={n.href}
+                  class:list={[
+                    'transition-colors hover:text-white',
+                    isActive(n.href) ? 'text-white' : 'text-muted',
+                  ]}
+                  aria-current={isActive(n.href) ? 'page' : undefined}
+                >
+                  {n.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-md border border-border px-3 py-1.5 text-sm text-muted">
+            Menu
+          </summary>
+          <ul class="absolute right-0 mt-2 w-44 rounded-lg border border-border bg-surface p-2 text-sm shadow-xl">
+            {
+              nav.map((n) => (
+                <li>
+                  <a href={n.href} class="block rounded-md px-3 py-2 text-muted hover:bg-white/5 hover:text-white">
+                    {n.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </details>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-5 py-12 md:py-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border/60">
+      <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-muted md:flex-row">
+        <p>© {new Date().getFullYear()} Hammad Sid</p>
+        <ul class="flex gap-5">
+          <li><a class="hover:text-white" href={links.github} rel="noopener">GitHub</a></li>
+          <li><a class="hover:text-white" href={links.linkedin} rel="noopener">LinkedIn</a></li>
+          <li><a class="hover:text-white" href={links.upwork} rel="noopener">Upwork</a></li>
+          <li><a class="hover:text-white" href={links.email}>Email</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

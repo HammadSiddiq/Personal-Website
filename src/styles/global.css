@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-border: #23232f;
+  --color-muted: #8b8b9a;
+  --color-text: #e8e8ee;
+  --color-accent: #7c5cff;
+  --color-accent-2: #22d3ee;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(60rem 30rem at 80% -10%, rgb(124 92 255 / 0.12), transparent 60%),
+    radial-gradient(40rem 25rem at -10% 10%, rgb(34 211 238 / 0.08), transparent 60%),
+    var(--color-bg);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}

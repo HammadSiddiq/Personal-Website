@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+
+const featured = [
+  {
+    title: 'VRSim',
+    tag: 'Unity · VR',
+    blurb: 'A VR courtroom simulation built in Unity as my final-year project.',
+  },
+  {
+    title: 'Cash & Carnage',
+    tag: 'Phaser 3 · Browser',
+    blurb: 'A neon arena army-builder that runs in the browser with a multiplayer backend.',
+  },
+  {
+    title: 'CricIt',
+    tag: 'React Native · Mobile',
+    blurb: 'A cricket scoring app with custom formats and a full scoring engine.',
+  },
+];
+---
+
+<Base>
+  <section class="py-10 md:py-20">
+    <p class="font-mono text-sm text-accent-2">Hi, I'm Hammad 👋</p>
+    <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+      I build <span class="gradient-text">multiplayer VR</span><br class="hidden md:block" />
+      and browser games.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-muted">
+      Unity and C# developer. I ship playable things: VR experiences, networked games, and tools that
+      make them better.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/projects"
+        class="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition hover:brightness-110"
+      >
+        See my work
+      </a>
+      <a
+        href="/contact"
+        class="rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-text transition hover:border-accent"
+      >
+        Get in touch
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <div class="flex items-end justify-between">
+      <h2 class="text-xl font-semibold">Featured projects</h2>
+      <a href="/projects" class="text-sm text-muted hover:text-white">All projects →</a>
+    </div>
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+      {
+        featured.map((p) => (
+          <a href="/projects" class="card block">
+            <p class="font-mono text-xs text-accent-2">{p.tag}</p>
+            <h3 class="mt-2 text-lg font-semibold">{p.title}</h3>
+            <p class="mt-2 text-sm text-muted">{p.blurb}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-16 grid gap-4 md:grid-cols-3">
+    {
+      [
+        ['Unity & C#', 'Gameplay systems, tooling, and polish.'],
+        ['Multiplayer', 'Networked VR and browser games, including Photon.'],
+        ['Technical drafting', 'CAD and drafting work alongside development.'],
+      ].map(([t, d]) => (
+        <div class="rounded-xl border border-border/60 p-5">
+          <h3 class="font-semibold">{t}</h3>
+          <p class="mt-1 text-sm text-muted">{d}</p>
+        </div>
+      ))
+    }
+  </section>
+</Base>
