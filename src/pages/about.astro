@@ -1,33 +1,57 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const skills = [
+  ['Unity', 'Gameplay systems, scenes, physics, UI, and optimization.'],
+  ['C#', 'Clean, maintainable code for gameplay and tools.'],
+  ['VR', 'Interaction, comfort, and performance for headset experiences.'],
+  ['Mobile', 'Touch controls and builds tuned for phones.'],
+  ['Multiplayer', 'Networked play, including Photon for VR.'],
+  ['Editor tools', 'Custom Unity tools that speed up production.'],
+];
+
+const builds = [
+  ['Mobile games', 'Games designed for short sessions and touch input.'],
+  ['VR experiences', 'Immersive projects, from simulations to multiplayer.'],
+  ['Unity tools', 'Editor tools and systems other developers can reuse.'],
+];
 ---
 
-<Base title="About" description="About Hammad Sid, Unity developer building multiplayer VR and browser games.">
+<Base title="About" description="About Hammad Sid, a Unity developer building mobile and VR games.">
   <h1 class="text-3xl font-bold tracking-tight md:text-4xl">About</h1>
 
-  <div class="prose prose-invert mt-8 max-w-2xl prose-a:text-accent-2">
+  <div class="prose prose-invert mt-8 max-w-2xl">
     <p>
-      I'm Hammad, a Unity and indie game developer. I work mostly in C#, and I build multiplayer VR
-      applications and browser games.
-    </p>
-    <p>
-      I publish games on itch.io, and I've used Photon for multiplayer VR. Alongside game development I
-      do freelance work, including CAD and technical drafting.
-    </p>
-
-    <h2>What I work with</h2>
-    <ul>
-      <li><strong>Engines:</strong> Unity, Phaser 3</li>
-      <li><strong>Languages:</strong> C#, JavaScript/TypeScript</li>
-      <li><strong>Multiplayer:</strong> Photon</li>
-      <li><strong>Mobile:</strong> React Native / Expo</li>
-    </ul>
-
-    <h2>Elsewhere</h2>
-    <p>
-      Find me on <a href="https://github.com/HammadSiddiq" rel="noopener">GitHub</a>,
-      <a href="https://www.linkedin.com/in/hammadmsiddique/" rel="noopener">LinkedIn</a>, and
-      <a href="https://www.upwork.com/freelancers/~0189f791d8afe7a799" rel="noopener">Upwork</a>.
+      I'm Hammad, a Unity and C# developer. I build mobile and VR games, and the Unity tools that make
+      them faster to build.
     </p>
   </div>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-semibold">What I work with</h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        skills.map(([t, d]) => (
+          <div class="card">
+            <h3 class="font-semibold">{t}</h3>
+            <p class="mt-1 text-sm text-muted">{d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-semibold">What I build</h2>
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+      {
+        builds.map(([t, d]) => (
+          <div class="rounded-xl border border-border/60 p-5">
+            <h3 class="font-semibold">{t}</h3>
+            <p class="mt-1 text-sm text-muted">{d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 </Base>

@@ -1,59 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const projects = [
-  {
-    title: 'VRSim',
-    tag: 'Unity · VR',
-    blurb:
-      'A VR courtroom simulation built in Unity as my final-year project. Includes a full written report documenting design and implementation.',
-    links: [],
-  },
-  {
-    title: 'Cash & Carnage',
-    tag: 'Phaser 3 · Multiplayer',
-    blurb:
-      'A browser-based neon arena army-builder made with Phaser 3, backed by a multiplayer server.',
-    links: [{ label: 'GitHub', href: 'https://github.com/HammadSiddiq/cash-and-carnage' }],
-  },
-  {
-    title: 'CricIt',
-    tag: 'React Native · Android',
-    blurb:
-      'A mobile cricket scoring app with custom match formats, a complete scoring engine, and match resume.',
-    links: [],
-  },
-];
+import { projects } from '../data/projects';
 ---
 
-<Base title="Projects" description="Selected projects by Hammad Sid: VR, browser games, and mobile apps.">
+<Base title="Projects" description="Unity projects by Hammad Sid: mobile and VR games.">
   <h1 class="text-3xl font-bold tracking-tight md:text-4xl">Projects</h1>
   <p class="mt-3 max-w-2xl text-muted">
-    A selection of things I've built. More games are on my itch.io page and code is on GitHub.
+    Unity games and tools I've built. Hit Play to try a game on itch.io.
   </p>
 
   <div class="mt-10 grid gap-5 md:grid-cols-2">
     {
       projects.map((p) => (
-        <article class="card">
+        <article class="card flex flex-col">
           <p class="font-mono text-xs text-accent-2">{p.tag}</p>
           <h2 class="mt-2 text-xl font-semibold">{p.title}</h2>
           <p class="mt-2 text-sm text-muted">{p.blurb}</p>
-          {p.links.length > 0 && (
-            <div class="mt-4 flex gap-4 text-sm">
-              {p.links.map((l) => (
-                <a class="text-accent-2 hover:underline" href={l.href} rel="noopener">
-                  {l.label} →
-                </a>
-              ))}
+          {p.play && (
+            <div class="mt-auto pt-4 text-sm">
+              <a class="text-accent-2 hover:underline" href={p.play} rel="noopener" target="_blank">
+                Play →
+              </a>
             </div>
           )}
         </article>
       ))
     }
   </div>
-
-  <p class="mt-10 text-sm text-muted">
-    More on <a class="text-accent-2 hover:underline" href="https://github.com/HammadSiddiq" rel="noopener">GitHub</a>.
-  </p>
 </Base>
