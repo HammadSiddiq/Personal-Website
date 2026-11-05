@@ -1,57 +1,57 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const skills = [
-  ['Unity', 'Gameplay systems, scenes, physics, UI, and optimization.'],
-  ['C#', 'Clean, maintainable code for gameplay and tools.'],
-  ['VR', 'Interaction, comfort, and performance for headset experiences.'],
-  ['Mobile', 'Touch controls and builds tuned for phones.'],
-  ['Multiplayer', 'Networked play, including Photon for VR.'],
-  ['Editor tools', 'Custom Unity tools that speed up production.'],
-];
-
-const builds = [
-  ['Mobile games', 'Games designed for short sessions and touch input.'],
-  ['VR experiences', 'Immersive projects, from simulations to multiplayer.'],
-  ['Unity tools', 'Editor tools and systems other developers can reuse.'],
-];
 ---
 
-<Base title="About" description="About Hammad Sid, a Unity developer building mobile and VR games.">
-  <h1 class="text-3xl font-bold tracking-tight md:text-4xl">About</h1>
+<Base title="About" description="About Hammad MS, a Unity game developer building mobile and VR games.">
+  <header class="flex items-center gap-4">
+    <h1 class="text-5xl font-extrabold uppercase md:text-7xl">Hammad MS</h1>
+    <a href="/projects" aria-label="See my projects"><span class="circle-arrow !h-12 !w-12 text-xl">→</span></a>
+  </header>
+  <p class="mt-2 text-sm uppercase tracking-wide">Game Developer</p>
 
-  <div class="prose prose-invert mt-8 max-w-2xl">
-    <p>
-      I'm Hammad, a Unity and C# developer. I build mobile and VR games, and the Unity tools that make
-      them faster to build.
-    </p>
-  </div>
+  <hr class="mt-10 border-white/25" />
 
-  <section class="mt-12">
-    <h2 class="text-xl font-semibold">What I work with</h2>
-    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        skills.map(([t, d]) => (
-          <div class="card">
-            <h3 class="font-semibold">{t}</h3>
-            <p class="mt-1 text-sm text-muted">{d}</p>
-          </div>
-        ))
-      }
+  <section class="mt-12 max-w-3xl">
+    <h2 class="text-lg font-bold not-italic">SHORT SUMMARY</h2>
+    <div class="mt-5 space-y-4 text-sm leading-relaxed">
+      <p>
+        I'm a Unity game developer based in Pakistan. I build mobile and VR games in Unity and C#, and
+        the Unity tools that make them faster to build.
+      </p>
+      <p>
+        I specialize in C# scripting, the Unity editor, and level design, with a focus on VR and mobile
+        experiences, including multiplayer.
+      </p>
     </div>
   </section>
 
-  <section class="mt-12">
-    <h2 class="text-xl font-semibold">What I build</h2>
-    <div class="mt-5 grid gap-4 md:grid-cols-3">
-      {
-        builds.map(([t, d]) => (
-          <div class="rounded-xl border border-border/60 p-5">
-            <h3 class="font-semibold">{t}</h3>
-            <p class="mt-1 text-sm text-muted">{d}</p>
-          </div>
-        ))
-      }
+  <section class="mt-14 grid border-y border-white/25 md:grid-cols-2 md:divide-x md:divide-white/25">
+    <div class="py-8 md:pr-8">
+      <h2 class="text-base font-bold not-italic">EDUCATION</h2>
+      <ul class="mt-4 space-y-1 text-sm">
+        <li>O &amp; A Levels from Roots Millennium College</li>
+        <li>Bachelors in Computer Science from FAST Islamabad</li>
+      </ul>
     </div>
+    <div class="border-t border-white/25 py-8 md:border-t-0 md:pl-8">
+      <h2 class="text-base font-bold not-italic">SKILLS</h2>
+      <ul class="mt-4 space-y-1 text-sm">
+        <li>C# Scripting</li>
+        <li>Unity 3D</li>
+        <li>Level Design</li>
+        <li>VR Development</li>
+        <li>Mobile Games</li>
+        <li>Multiplayer (Photon)</li>
+        <li>Unity Editor Tools</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 text-center">
+    <h2 class="text-4xl font-extrabold uppercase md:text-5xl">Let's Play!</h2>
+    <p class="mt-4 text-sm font-medium uppercase tracking-wide">Feel free to contact me for future work and partnerships</p>
+    <a href="/contact" class="mt-8 inline-block rounded-full bg-accent px-7 py-2.5 text-xs font-bold uppercase tracking-wide text-bg hover:brightness-110">
+      Contact me
+    </a>
   </section>
 </Base>

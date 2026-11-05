@@ -2,15 +2,15 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bg: #0a0a0f;
-  --color-surface: #12121a;
-  --color-border: #23232f;
-  --color-muted: #8b8b9a;
-  --color-text: #e8e8ee;
-  --color-accent: #7c5cff;
-  --color-accent-2: #22d3ee;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-bg: #010127;
+  --color-surface: #0a0a38;
+  --color-border: #2a2a5c;
+  --color-muted: #a8a8c4;
+  --color-text: #f5f2ef;
+  --color-accent: #caff00;
+  --color-accent-2: #caff00;
+  --color-box: #371b22;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 html {
@@ -22,32 +22,64 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(60rem 30rem at 80% -10%, rgb(124 92 255 / 0.12), transparent 60%),
-    radial-gradient(40rem 25rem at -10% 10%, rgb(34 211 238 / 0.08), transparent 60%),
-    var(--color-bg);
+  background: var(--color-bg);
+}
+
+h1,
+h2 {
+  font-style: italic;
+  font-weight: 800;
 }
 
 ::selection {
   background: var(--color-accent);
-  color: white;
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-bg);
 }
 
 .card {
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 1.25rem;
   transition: border-color 0.2s, transform 0.2s;
 }
 .card:hover {
   border-color: var(--color-accent);
   transform: translateY(-2px);
+}
+
+/* Slow zoom on the hero cover image */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kenburns { animation: none; }
+}
+
+/* Placeholder shown until a real image is dropped into /public/images */
+.img-placeholder {
+  background:
+    radial-gradient(60% 60% at 70% 30%, rgb(202 255 0 / 0.12), transparent 70%),
+    linear-gradient(135deg, #1a0f3a, #371b22);
+}
+
+.circle-arrow {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-text);
+  border-radius: 9999px;
+  color: var(--color-accent);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+a:hover > .circle-arrow {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
 }
