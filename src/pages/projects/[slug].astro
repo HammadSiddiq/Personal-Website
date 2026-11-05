@@ -35,11 +35,11 @@ const hasMedia = videos.length > 0 || p.gallery.length > 0;
       </div>
     </div>
 
-    <div class="space-y-5">
+    <div class="grid grid-cols-2 gap-4">
       {
         videos.map((v) =>
           v.yt ? (
-            <div class="aspect-video overflow-hidden rounded-sm">
+            <div class="col-span-2 aspect-video overflow-hidden rounded-sm">
               <iframe
                 class="h-full w-full"
                 src={`https://www.youtube-nocookie.com/embed/${v.yt}`}
@@ -50,12 +50,23 @@ const hasMedia = videos.length > 0 || p.gallery.length > 0;
               />
             </div>
           ) : (
-            <video class="w-full rounded-sm" controls preload="metadata" playsinline src={v.src} />
+            <video class="col-span-2 w-full rounded-sm" controls preload="metadata" playsinline src={v.src} />
           ),
         )
       }
-      {p.gallery.map((src) => <img src={src} alt={`${p.title} screenshot`} class="w-full rounded-sm" loading="lazy" />)}
-      {!hasMedia && <div class="img-placeholder aspect-video w-full rounded-sm" />}
+      {
+        p.gallery.map((g) => (
+          <img
+            src={g.src}
+            width={g.w}
+            height={g.h}
+            alt={`${p.title} screenshot`}
+            class:list={['w-full rounded-sm', g.w >= g.h ? 'col-span-2' : '']}
+            loading="lazy"
+          />
+        ))
+      }
+      {!hasMedia && <div class="img-placeholder col-span-2 aspect-video w-full rounded-sm" />}
     </div>
   </div>
 
