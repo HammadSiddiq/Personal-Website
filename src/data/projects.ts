@@ -9,11 +9,11 @@ export interface Project {
   description?: string; // full text for the project page; separate paragraphs with a blank line
   play?: string; // itch.io URL. Powers the "Try it" and "Play →" links. Leave out if there is no link.
   videos?: string[]; // YouTube links, or /videos/<file>.mp4 for a file in public/videos
-  featured?: boolean; // shown in the numbered portfolio on the home page (first 6)
+  featured?: boolean; // shown in the numbered list on the home page (first 3, the latest one is excluded)
   latest?: boolean; // shown in "My Latest Work" on the home hero
 }
 
-// Add new Unity projects here, in display order. Each one gets its own page at /projects/<slug>.
+// Add new Unity projects here, in display order. Each one gets its own page at /games/<slug>.
 const list: Project[] = [
   {
     slug: 'vrsim',
@@ -64,7 +64,6 @@ const list: Project[] = [
     description:
       'Welcome to the ultimate 2D Shooter Game, a fast-paced challenge spread across three thrilling levels! Use the arrow keys to move your character through action-packed environments while aiming and shooting at enemies with your mouse. Dodge incoming obstacles and stay ahead of relentless enemies that chase you down. If you need a break, just hit the Escape key to pause the game. With smooth controls and non-stop action, this shooter will test your reflexes and keep you hooked from start to finish. Get ready, aim, and survive—have fun!',
     play: 'https://lord-hammad.itch.io/cosmic-havoc',
-    featured: true,
   },
   {
     slug: 'space-adventure',
@@ -74,7 +73,6 @@ const list: Project[] = [
     description:
       'You are trapped in the depths of space, and the only way out is to fight your way through! In this action-packed arena game, your mission is to defeat waves of enemies while navigating a hostile environment. Along the way, collect powerful upgrades that enhance your abilities and help you survive the chaos. Your ultimate goal is to find the hidden key that unlocks the portal to the next level. With each stage more challenging than the last, only the strongest and smartest will escape this galactic trap!',
     play: 'https://lord-hammad.itch.io/space-adventure',
-    featured: true,
   },
   {
     slug: 'box-shooter',

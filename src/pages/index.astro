@@ -5,7 +5,7 @@ import { findImage } from '../lib/img';
 
 const hero = findImage('hero', 'cover');
 const latest = projects.find((p) => p.latest) ?? projects[0];
-const featured = projects.filter((p) => p.featured).slice(0, 6);
+const featured = projects.filter((p) => p.featured && p.slug !== latest?.slug).slice(0, 3);
 ---
 
 <Base full>
@@ -23,11 +23,10 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
     </div>
 
     <div class="mx-auto max-w-6xl px-6 pb-16 pt-40 md:pt-56">
-      <p class="text-xs font-medium uppercase tracking-widest">Game Developer</p>
-      <h1 class="mt-2 text-6xl font-extrabold uppercase leading-none md:text-8xl">Hammad MS</h1>
+      <p class="text-xs font-medium uppercase tracking-widest">Unity Game Developer</p>
+      <h1 class="mt-2 text-6xl font-extrabold uppercase leading-none md:text-8xl">Hammad Sid</h1>
       <p class="mt-5 max-w-md text-sm leading-relaxed">
-        I build Mobile and VR games in Unity. A Unity and C# developer making games and the Unity tools
-        behind them.
+        I build Mobile and VR games in Unity. A game developer making games and Unity tools.
       </p>
 
       {
@@ -45,7 +44,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
               <p class="mt-1 text-muted">
                 {latest.title} | {latest.genre}
               </p>
-              <a href={`/projects/${latest.slug}`} class="mt-3 inline-flex items-center gap-2 hover:text-accent">
+              <a href={`/games/${latest.slug}`} class="mt-3 inline-flex items-center gap-2 hover:text-accent">
                 View game
                 <span class="circle-arrow !h-6 !w-6 text-xs">→</span>
               </a>
@@ -59,7 +58,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
   <!-- Portfolio -->
   <section class="border-t border-white/25">
     <div class="mx-auto max-w-6xl px-6 py-10">
-      <h2 class="text-2xl font-extrabold uppercase">My Projects</h2>
+      <h2 class="text-2xl font-extrabold uppercase">My Games</h2>
     </div>
 
     {
@@ -73,7 +72,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
               </span>
             </div>
             <div>
-              <a href={`/projects/${p.slug}`} class="block aspect-video overflow-hidden rounded-sm">
+              <a href={`/games/${p.slug}`} class="block aspect-video overflow-hidden rounded-sm">
                 {p.image ? (
                   <img src={p.image} alt={p.title} class="h-full w-full object-cover transition duration-300 hover:scale-[1.02]" loading="lazy" />
                 ) : (
@@ -81,7 +80,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
                 )}
               </a>
               <h3 class="mt-6 flex items-center gap-3 text-2xl font-extrabold italic uppercase">
-                <a href={`/projects/${p.slug}`} class="inline-flex items-center gap-3">
+                <a href={`/games/${p.slug}`} class="inline-flex items-center gap-3">
                   {p.title}
                   <span class="circle-arrow">→</span>
                 </a>
@@ -89,7 +88,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
               <p class="mt-2 text-xs font-medium uppercase tracking-widest text-muted">Independent</p>
               <p class="mt-4 max-w-xl text-sm leading-relaxed text-text/90">{p.blurb}</p>
               <a
-                href={`/projects/${p.slug}`}
+                href={`/games/${p.slug}`}
                 class="mt-5 inline-block rounded-full border border-text px-6 py-2 text-xs font-medium transition hover:border-accent hover:text-accent"
               >
                 View Game
@@ -101,8 +100,8 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
     }
 
     <div class="border-t border-white/25">
-      <div class="mx-auto max-w-6xl px-6 py-8 text-right">
-        <a href="/projects" class="text-xl font-extrabold italic uppercase hover:text-accent">View All Games</a>
+      <div class="mx-auto max-w-6xl px-6 py-8 text-center">
+        <a href="/games" class="text-xl font-extrabold uppercase hover:text-accent">View All Games</a>
       </div>
     </div>
   </section>

@@ -8,15 +8,15 @@ interface Props {
 }
 
 const {
-  title = 'Hammad MS',
-  description = 'Hammad MS, a Unity game developer building mobile and VR games.',
+  title = 'Hammad Sid',
+  description = 'Hammad Sid, a Unity game developer building mobile and VR games.',
   full = false,
 } = Astro.props;
 
 const nav = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
+  { href: '/games', label: 'Games' },
   { href: '/how-i-work', label: 'How I Work' },
   { href: '/contact', label: 'Contact' },
   { href: '/blog', label: 'Blog' },
@@ -24,7 +24,7 @@ const nav = [
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
-const fullTitle = title === 'Hammad MS' ? title : `${title} · Hammad MS`;
+const fullTitle = title === 'Hammad Sid' ? title : `${title} · Hammad Sid`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
 const links = {
@@ -102,7 +102,7 @@ const links = {
 
     <footer class="border-t border-white/25">
       <div class="mx-auto grid max-w-6xl gap-6 px-6 py-12 text-xs font-medium uppercase tracking-wide md:grid-cols-3">
-        <a class="hover:text-accent" href="/projects">Games</a>
+        <a class="hover:text-accent" href="/games">Games</a>
         <a class="hover:text-accent md:text-center" href="/contact">About &amp; Contact</a>
         <ul class="flex flex-wrap gap-3 md:justify-end">
           <li><a class="hover:text-accent" href={links.linkedin} rel="noopener">LinkedIn</a></li>
@@ -113,7 +113,7 @@ const links = {
         </ul>
       </div>
       <p class="px-6 pb-8 text-center text-[11px] uppercase tracking-wide text-muted">
-        © {new Date().getFullYear()} Hammad MS
+        © {new Date().getFullYear()} Hammad Sid
       </p>
     </footer>
   </body>

@@ -3,15 +3,15 @@ import Base from '../layouts/Base.astro';
 import { projects } from '../data/projects';
 ---
 
-<Base title="Projects" description="Unity projects by Hammad MS: mobile and VR games.">
-  <h1 class="text-4xl font-extrabold md:text-5xl">Projects</h1>
-  <p class="mt-3 max-w-2xl text-sm text-muted">Unity games and tools I've built. Open a project to see more, or hit Play to try it on itch.io.</p>
+<Base title="Games" description="Unity games by Hammad Sid: mobile and VR games.">
+  <h1 class="text-4xl font-extrabold md:text-5xl">Games</h1>
+  <p class="mt-3 max-w-2xl text-sm text-muted">Unity games and tools I've built. Open a game to see more, or hit Play to try it on itch.io.</p>
 
   <div class="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2">
     {
       projects.map((p) => (
         <article>
-          <a href={`/projects/${p.slug}`} class="block aspect-video overflow-hidden rounded-sm">
+          <a href={`/games/${p.slug}`} class="block aspect-video overflow-hidden rounded-sm">
             {p.image ? (
               <img src={p.image} alt={p.title} class="h-full w-full object-cover transition duration-300 hover:scale-[1.02]" loading="lazy" />
             ) : (
@@ -19,7 +19,7 @@ import { projects } from '../data/projects';
             )}
           </a>
           <h2 class="mt-4 text-lg font-extrabold italic">
-            <a href={`/projects/${p.slug}`} class="hover:text-accent">{p.title}</a>
+            <a href={`/games/${p.slug}`} class="hover:text-accent">{p.title}</a>
           </h2>
           <p class="mt-1 text-xs font-medium uppercase tracking-widest text-muted">{p.genre}</p>
           <p class="mt-2 text-sm text-text/90">{p.blurb}</p>
