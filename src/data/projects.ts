@@ -1,16 +1,19 @@
 import { findImage } from '../lib/img';
+import { listGallery } from '../lib/media';
 
 export interface Project {
-  slug: string; // image file name: public/images/projects/<slug>.jpg (or .webp / .png)
+  slug: string; // folder/file name: public/images/projects/<slug>.jpg (thumbnail) and /<slug>/ (gallery)
   title: string;
   genre: string; // e.g. "3D Platformer", "VR Simulation"
-  blurb: string;
-  play?: string; // itch.io URL. The "Play →" link only shows when this is set.
+  blurb: string; // short text for cards
+  description?: string; // full text for the project page; separate paragraphs with a blank line
+  play?: string; // itch.io URL. Powers the "Try it" and "Play →" links.
+  videos?: string[]; // YouTube links, or /videos/<file>.mp4 for a file in public/videos
   featured?: boolean; // shown in the numbered portfolio on the home page (first 6)
   latest?: boolean; // shown in "My Latest Work" on the home hero
 }
 
-// Add new Unity projects here (newest first).
+// Add new Unity projects here (newest first). Each one gets its own page at /projects/<slug>.
 const list: Project[] = [
   {
     slug: 'vrsim',
@@ -22,4 +25,7 @@ const list: Project[] = [
   },
 ];
 
-export const projects = list.map((p) => ({ ...p, image: findImage('projects', p.slug) }));
+export const projects = list.map((p) => {
+  const gallery = listGallery(p.slug);
+  return { ...p, gallery, image: findImage('projects', p.slug) ?? gallery[0] };
+});

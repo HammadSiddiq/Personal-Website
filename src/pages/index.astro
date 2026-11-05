@@ -14,7 +14,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
     <div class="absolute inset-0 -z-10">
       {
         hero ? (
-          <img src={hero} alt="" class="kenburns h-full w-full object-cover" />
+          <img src={hero} alt="" class="kenburns h-full w-full object-cover opacity-50" />
         ) : (
           <div class="img-placeholder kenburns h-full w-full" />
         )
@@ -45,12 +45,10 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
               <p class="mt-1 text-muted">
                 {latest.title} | {latest.genre}
               </p>
-              {latest.play && (
-                <a href={latest.play} target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 hover:text-accent">
-                  Play
-                  <span class="circle-arrow !h-6 !w-6 text-xs">→</span>
-                </a>
-              )}
+              <a href={`/projects/${latest.slug}`} class="mt-3 inline-flex items-center gap-2 hover:text-accent">
+                View game
+                <span class="circle-arrow !h-6 !w-6 text-xs">→</span>
+              </a>
             </div>
           </div>
         )
@@ -61,7 +59,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
   <!-- Portfolio -->
   <section class="border-t border-white/25">
     <div class="mx-auto max-w-6xl px-6 py-10">
-      <h2 class="text-2xl font-extrabold uppercase">My Portfolio</h2>
+      <h2 class="text-2xl font-extrabold uppercase">My Projects</h2>
     </div>
 
     {
@@ -75,33 +73,27 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
               </span>
             </div>
             <div>
-              <div class="aspect-video overflow-hidden rounded-sm">
+              <a href={`/projects/${p.slug}`} class="block aspect-video overflow-hidden rounded-sm">
                 {p.image ? (
-                  <img src={p.image} alt={p.title} class="h-full w-full object-cover" loading="lazy" />
+                  <img src={p.image} alt={p.title} class="h-full w-full object-cover transition duration-300 hover:scale-[1.02]" loading="lazy" />
                 ) : (
                   <div class="img-placeholder h-full w-full" />
                 )}
-              </div>
+              </a>
               <h3 class="mt-6 flex items-center gap-3 text-2xl font-extrabold italic uppercase">
-                {p.title}
-                {p.play && (
-                  <a href={p.play} target="_blank" rel="noopener" aria-label={`Play ${p.title}`}>
-                    <span class="circle-arrow">→</span>
-                  </a>
-                )}
+                <a href={`/projects/${p.slug}`} class="inline-flex items-center gap-3">
+                  {p.title}
+                  <span class="circle-arrow">→</span>
+                </a>
               </h3>
               <p class="mt-2 text-xs font-medium uppercase tracking-widest text-muted">Independent</p>
               <p class="mt-4 max-w-xl text-sm leading-relaxed text-text/90">{p.blurb}</p>
-              {p.play && (
-                <a
-                  href={p.play}
-                  target="_blank"
-                  rel="noopener"
-                  class="mt-5 inline-block rounded-full border border-text px-6 py-2 text-xs font-medium transition hover:border-accent hover:text-accent"
-                >
-                  Play →
-                </a>
-              )}
+              <a
+                href={`/projects/${p.slug}`}
+                class="mt-5 inline-block rounded-full border border-text px-6 py-2 text-xs font-medium transition hover:border-accent hover:text-accent"
+              >
+                View Game
+              </a>
             </div>
           </div>
         </article>
